@@ -123,3 +123,8 @@
         overflow-y: auto;
     }
 }
+
+.fa-NavIcons {
+    margin-right: 0.75rem;
+    font-size: 1.5em;
+}
