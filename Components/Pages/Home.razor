@@ -1,7 +1,83 @@
 ﻿@page "/"
+@inject AuthenticationStateProvider AuthStateProvider
+@inject NavigationManager Navigation
 
-<PageTitle>Home</PageTitle>
+@code
+{
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
 
-<h1>Hello, world!</h1>
+        if (authState.User.Identity?.IsAuthenticated == true)
+        {
+            Navigation.NavigateTo("/TheForge");
+        }
+    }
+}
 
-Welcome to your new app.
+<PageTitle>CadreForge</PageTitle>
+
+<div class="container py-5">
+
+    <section class="text-center mb-5">
+        <h1 class="display-3 fw-bold">
+            CadreForge
+        </h1>
+        <p class="lead mt-3">
+            Track your armies. Organize your projects.
+            Never lose a paint recipe again.
+        </p>
+    </section>
+
+    <section class="text-center my-5">
+        <h2>Your Hobby Painting Command Centre</h2>
+
+        <p class="fs-5 mt-3">
+            Manage miniature collections, painting projects,
+            paint recipes and hobby progress across every
+            tabletop game you play.
+        </p>
+    </section>
+
+    <section class="my-5">
+
+        <h2 class="text-center mb-4">
+            Why CadreForge?
+        </h2>
+        <div class="text-center">
+            <p>
+                Keep track of what you've built,
+                painted and still need to finish.
+            </p>
+            <p>
+                Store paint recipes and techniques
+                for future projects. so you dont forget what ratios you 
+                used for your Space Marine colour schemes! 
+            </p>
+            <p>
+                Organize armies and units across
+                multiple game systems.
+            </p>
+            <p>
+                View your progress over time and
+                celebrate completed projects.
+            </p>
+        </div>
+
+    </section>
+
+    <section class="text-center mt-5">
+
+        <h2>Ready to Build Your Forge?</h2>
+
+        <p class="mt-3">
+            Join CadreForge and start organizing
+            your hobby today.
+        </p>
+        <p>
+            Lots more features coming soon! Sneak peak being a Level system and achievements! Maybe even a share board 😏
+        </p>
+
+    </section>
+
+</div>
